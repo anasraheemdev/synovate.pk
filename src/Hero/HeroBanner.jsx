@@ -198,3 +198,10 @@ const HeroBanner = () => {
 };
 
 export default HeroBanner;
+
+
+
+
+function Welcome(props) {
+  return <h1>Hello, {props.name}!</h1>;
+}

@@ -214,10 +214,7 @@ const Navbar = () => {
                   <Globe size={20} />
                 </button>
               </li>
-              <li className="nav-item">
-                <a href="#" className="btn btn-outline-danger me-2">Sign In</a>
-                <a href="#" className="btn btn-danger">Start Free</a>
-              </li>
+             
             </ul>
           </div>
         </div>
