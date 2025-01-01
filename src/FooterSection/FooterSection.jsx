@@ -77,19 +77,19 @@ const FooterSection = () => {
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">
                 <MapPin className="text-danger" size={20} />
               </div>
-              <span className="text-white-50">123 Tech Street, Silicon Valley, CA</span>
+              <span className="text-white-50">Islamabad, Pakistan</span>
             </div>
             <div className="d-flex align-items-center mb-3">
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">
                 <Phone className="text-danger" size={20} />
               </div>
-              <span className="text-white-50">+1 (555) 123-4567</span>
+              <span className="text-white-50">+92 332 9551188</span>
             </div>
             <div className="d-flex align-items-center mb-3">
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">
                 <Mail className="text-danger" size={20} />
               </div>
-              <span className="text-white-50">info@techcraft.com</span>
+              <span className="text-white-50">info@synovate.pk</span>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ const FooterSection = () => {
         <div className="row py-4 border-top border-danger border-opacity-25">
           <div className="col-md-6 text-center text-md-start">
             <p className="mb-0 text-white-50">
-              © 2024 Synovate. All rights reserved.
+              © 2025 Synovate. All rights reserved.
             </p>
           </div>
           <div className="col-md-6 text-center text-md-end">

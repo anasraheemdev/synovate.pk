@@ -14,25 +14,25 @@ const ContactSection = () => {
       id: 1,
       icon: <Mail size={24} />,
       title: 'Email Us',
-      content: 'info@company.com'
+      content: 'info@synovate.pk'
     },
     {
       id: 2,
       icon: <Phone size={24} />,
       title: 'Call Us',
-      content: '+1 (555) 123-4567'
+      content: '+92 332 9551188'
     },
     {
       id: 3,
       icon: <MapPin size={24} />,
       title: 'Visit Us',
-      content: '123 Tech Street, Silicon Valley, CA'
+      content: 'Islmabad, Pakistan'
     },
     {
       id: 4,
       icon: <Clock size={24} />,
       title: 'Business Hours',
-      content: 'Mon - Fri: 9:00 AM - 6:00 PM'
+      content: 'Mon - Fri: 9:00 AM - 5:00 PM'
     }
   ];
 
