@@ -5,6 +5,14 @@ import { ChevronLeft, ChevronRight, Code, Cpu, Cloud, ArrowRight } from 'lucide-
 
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e) => {
+    setMousePosition({
+      x: (e.clientX / window.innerWidth) * 30,
+      y: (e.clientY / window.innerHeight) * 30
+    });
+  };
 
   const slides = [
     {
@@ -65,7 +73,7 @@ const HeroBanner = () => {
   };
 
   return (
-    <div className="position-relative vh-100 overflow-hidden bg-black">
+    <div className="position-relative vh-100 overflow-hidden bg-black" onMouseMove={handleMouseMove}>
       <Particles
         className="position-absolute w-100 h-100"
         init={particlesInit}
@@ -124,7 +132,7 @@ const HeroBanner = () => {
               <div className="container text-center px-4">
                 <div className="row justify-content-center">
                   <div className="col-lg-8">
-                    {/* Floating Elements */}
+                    {/* Floating Elements with cursor movement */}
                     {slide.floatingItems.map((item, idx) => (
                       <div
                         key={idx}
@@ -133,6 +141,8 @@ const HeroBanner = () => {
                           top: `${20 + (idx * 25)}%`,
                           left: idx % 2 === 0 ? '5%' : '75%',
                           animationDelay: `${idx * 0.2}s`,
+                          transform: `translate(${mousePosition.x * (idx % 2 === 0 ? 1 : -1)}px, ${mousePosition.y * (idx % 2 === 0 ? 1 : -1)}px)`,
+                          transition: 'transform 0.3s ease-out'
                         }}
                       >
                         {item.icon}
@@ -198,10 +208,3 @@ const HeroBanner = () => {
 };
 
 export default HeroBanner;
-
-
-
-
-function Welcome(props) {
-  return <h1>Hello, {props.name}!</h1>;
-}

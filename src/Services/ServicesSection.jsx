@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Code, Cloud, Globe, Shield, Database, Cpu } from 'lucide-react';
+import { Code, Smartphone, Palette, Megaphone, Boxes, Users } from 'lucide-react';
 
 const ServicesSection = () => {
   const [activeService, setActiveService] = useState(null);
@@ -7,46 +7,46 @@ const ServicesSection = () => {
   const services = [
     {
       icon: <Code size={40} />,
-      title: 'Custom Software Development',
-      description: 'Build scalable custom software tailored to your business needs with cutting-edge technologies and best practices.',
+      title: 'Web Development',
+      description: 'From dynamic websites to robust e-commerce platforms, creating seamless, responsive, and secure websites that are visually stunning and functionally powerful.',
       features: ['Web Applications', 'Mobile Solutions', 'API Integration', 'Legacy System Modernization']
     },
     {
-      icon: <Cloud size={40} />,
-      title: 'Cloud Solutions',
-      description: 'Transform your business with secure, scalable, and reliable cloud infrastructure and migration services.',
+      icon: <Smartphone size={40} />,
+      title: 'App Development',
+      description: 'Build intuitive, high-performing mobile applications for iOS, Android, or cross-platform that offer flawless user experience and connect with customers on the go.',
       features: ['Cloud Migration', 'DevOps Solutions', 'Cloud Security', 'Infrastructure Management']
     },
     {
-      icon: <Shield size={40} />,
-      title: 'Cybersecurity Services',
-      description: 'Protect your digital assets with comprehensive security solutions and continuous monitoring.',
+      icon: <Palette size={40} />,
+      title: 'UI/UX Design',
+      description: 'Creating engaging, user-friendly interfaces that enhance user interaction and ensure your product stands out in the market.',
       features: ['Security Audits', 'Threat Detection', 'Compliance Solutions', 'Security Training']
     },
     {
-      icon: <Database size={40} />,
-      title: 'Data Analytics',
-      description: 'Turn your data into actionable insights with advanced analytics and machine learning solutions.',
+      icon: <Megaphone size={40} />,
+      title: 'Digital Marketing',
+      description: 'Comprehensive digital marketing strategies, including SEO, social media marketing, and content creation, designed to boost your online presence.',
       features: ['Big Data Solutions', 'Predictive Analytics', 'Data Visualization', 'Business Intelligence']
     },
     {
-      icon: <Globe size={40} />,
-      title: 'Digital Transformation',
-      description: 'Accelerate your digital journey with innovative solutions that drive growth and efficiency.',
+      icon: <Boxes size={40} />,
+      title: 'Virtual Reality',
+      description: 'Developing immersive solutions using VR, AR, and MR for gaming, education, healthcare, real estate, and entertainment industries.',
       features: ['Process Automation', 'Digital Strategy', 'Enterprise Solutions', 'Innovation Consulting']
     },
     {
-      icon: <Cpu size={40} />,
-      title: 'AI & Machine Learning',
-      description: 'Leverage the power of AI to automate processes and gain competitive advantages.',
+      icon: <Users size={40} />,
+      title: 'HR and Recruitment',
+      description: 'Specialized HR and Recruitment Services connecting businesses with top talent in VR/AR/MR, Unity development, web and mobile app development.',
       features: ['ML Models', 'AI Integration', 'Natural Language Processing', 'Computer Vision']
     }
   ];
 
+
   return (
     <section className="py-5 bg-light">
       <div className="container py-5">
-        {/* Section Header */}
         <div className="row justify-content-center mb-5">
           <div className="col-lg-7 text-center">
             <span className="badge bg-danger px-3 py-2 rounded-pill mb-3 animate__animated animate__fadeIn">
@@ -62,7 +62,6 @@ const ServicesSection = () => {
           </div>
         </div>
 
-        {/* Services Grid */}
         <div className="row g-4">
           {services.map((service, index) => (
             <div key={index} className="col-lg-4 col-md-6">
@@ -78,7 +77,6 @@ const ServicesSection = () => {
                 onMouseEnter={() => setActiveService(index)}
                 onMouseLeave={() => setActiveService(null)}
               >
-                {/* Card Header with Gradient */}
                 <div className="card-body p-5">
                   <div className="mb-4">
                     <div 
@@ -93,7 +91,6 @@ const ServicesSection = () => {
                     <p className="text-muted mb-4">{service.description}</p>
                   </div>
 
-                  {/* Features List */}
                   <ul className="list-unstyled mb-0">
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="mb-2 d-flex align-items-center">
@@ -108,7 +105,6 @@ const ServicesSection = () => {
                   </ul>
                 </div>
 
-                {/* Hover Effect Overlay */}
                 <div 
                   className="position-absolute bottom-0 start-0 w-100 h-1"
                   style={{
@@ -122,7 +118,6 @@ const ServicesSection = () => {
           ))}
         </div>
 
-        {/* CTA Section */}
         <div className="row justify-content-center mt-5 pt-5">
           <div className="col-lg-7 text-center">
             <h4 className="mb-4">Ready to Transform Your Business?</h4>
@@ -137,7 +132,6 @@ const ServicesSection = () => {
         </div>
       </div>
 
-      {/* Add required CSS for animations */}
       <style jsx>{`
         @keyframes float {
           0% { transform: translateY(0px); }

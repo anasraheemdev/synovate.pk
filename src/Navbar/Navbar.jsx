@@ -40,22 +40,7 @@ const Navbar = () => {
       }
     },
     {
-      title: 'Solutions',
-      submenu: [
-        { title: 'For Startups', description: 'Scale your business fast' },
-        { title: 'Enterprise', description: 'Large-scale solutions' },
-        { title: 'Government', description: 'Public sector tools' },
-        { title: 'Healthcare', description: 'HIPAA-compliant systems' }
-      ]
-    },
-    {
-      title: 'Resources',
-      submenu: [
-        { title: 'Documentation', badge: 'Updated' },
-        { title: 'API Reference', badge: 'New' },
-        { title: 'Community Forums' },
-        { title: 'Training & Certification' }
-      ]
+      title: 'Solutions'
     },
     {
       title: 'Company',
@@ -70,12 +55,10 @@ const Navbar = () => {
 
   return (
     <>
-      {/* Main Navbar */}
       <nav className={`navbar navbar-expand-lg fixed-top ${
         scrolled ? 'shadow-lg bg-white navbar-light' : 'navbar-dark bg-transparent'
       } transition-all duration-300`}>
         <div className="container-fluid px-4">
-          {/* Logo */}
           <a className="navbar-brand me-0 py-3" href="#">
             <span className={`fw-bold fs-4 ${
               !scrolled && 'text-white'
@@ -84,7 +67,6 @@ const Navbar = () => {
             </span>
           </a>
 
-          {/* Mobile Toggle */}
           <button
             className="navbar-toggler border-0 px-0"
             type="button"
@@ -97,27 +79,25 @@ const Navbar = () => {
             <Menu className={scrolled ? 'text-dark' : 'text-white'} size={24} />
           </button>
 
-          {/* Main Navigation */}
           <div className="collapse navbar-collapse" id="navbarMain">
             <ul className="navbar-nav mx-auto align-items-lg-center">
               {mainMenuItems.map((item, index) => (
-                <li key={index} className={`nav-item ${item.megamenu ? 'position-static' : 'dropdown'}`}>
+                <li key={index} className={`nav-item ${item.megamenu ? 'position-static' : item.submenu ? 'dropdown' : ''}`}>
                   <a
                     className={`nav-link px-3 d-flex align-items-center ${
                       scrolled ? 'text-dark' : 'text-white'
                     }`}
                     href="#"
-                    data-bs-toggle={item.megamenu ? 'mega-menu' : 'dropdown'}
+                    data-bs-toggle={item.megamenu ? 'mega-menu' : item.submenu ? 'dropdown' : undefined}
                   >
                     {item.title}
-                    <ChevronDown size={14} className="ms-1 opacity-75" />
+                    {item.submenu && <ChevronDown size={14} className="ms-1 opacity-75" />}
                   </a>
 
-                  {item.megamenu ? (
+                  {item.megamenu && (
                     <div className="dropdown-menu mega-menu w-100 border-0 rounded-0 mt-0 p-0 animate__animated animate__fadeIn">
                       <div className="container-fluid">
                         <div className="row g-4 p-4">
-                          {/* Featured Section */}
                           <div className="col-lg-3">
                             <h6 className="text-danger fw-bold mb-3">
                               {item.megamenu.featured.title}
@@ -135,7 +115,6 @@ const Navbar = () => {
                             ))}
                           </div>
 
-                          {/* Menu Columns */}
                           {item.megamenu.columns.map((column, idx) => (
                             <div key={idx} className="col-lg-3">
                               <h6 className="text-danger fw-bold mb-3">{column.title}</h6>
@@ -156,7 +135,9 @@ const Navbar = () => {
                         </div>
                       </div>
                     </div>
-                  ) : (
+                  )}
+
+                  {item.submenu && (
                     <ul className="dropdown-menu animate__animated animate__fadeIn">
                       {item.submenu.map((subItem, subIdx) => (
                         <li key={subIdx}>
@@ -183,7 +164,6 @@ const Navbar = () => {
               ))}
             </ul>
 
-            {/* Right Menu */}
             <ul className="navbar-nav align-items-lg-center">
               <li className="nav-item me-2">
                 <button
@@ -214,13 +194,11 @@ const Navbar = () => {
                   <Globe size={20} />
                 </button>
               </li>
-             
             </ul>
           </div>
         </div>
       </nav>
 
-      {/* Search Overlay */}
       {searchActive && (
         <div className="position-fixed top-0 start-0 w-100 h-100 bg-white animate__animated animate__fadeIn"
              style={{ zIndex: 1050 }}>
