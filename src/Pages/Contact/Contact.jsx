@@ -9,8 +9,10 @@ const Contact = () => {
     <>
     <Navbar/>
     <HeroCon/>
-    <Faqs/>
     <ContactFormSection/>
+    
+    <Faqs/>
+    
     <FooterSection/>
     
     </>
