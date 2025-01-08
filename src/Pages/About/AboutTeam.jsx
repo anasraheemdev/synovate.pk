@@ -12,7 +12,7 @@ const OurProfessionals = () => {
     {
       name: "Ali Usman",
       role: "Chief Executive Officer",
-      image: "https://synovate.pk/img/butt%20bhi.png",
+      image: "https://github.com/anasraheemdev/synovate.pk/blob/main/public/Pictures/butt%20bhi.png?raw=true",
       socials: {
         linkedin: "#",
         twitter: "#",
@@ -23,7 +23,7 @@ const OurProfessionals = () => {
     {
       name: "Anas Raheem",
       role: "Lead Software Engineer",
-      image: "https://synovate.pk/img/anas%20bhi.png",
+      image: "https://github.com/anasraheemdev/synovate.pk/blob/main/public/Pictures/anas%20bhi.png?raw=true",
       socials: {
         linkedin: "#",
         github: "#",
