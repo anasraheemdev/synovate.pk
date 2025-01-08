@@ -83,7 +83,7 @@ const FooterSection = () => {
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">
                 <Phone className="text-danger" size={20} />
               </div>
-              <span className="text-white-50">+92 332 9551188</span>
+              <span className="text-white-50">+92 (334) 5546272</span>
             </div>
             <div className="d-flex align-items-center mb-3">
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">

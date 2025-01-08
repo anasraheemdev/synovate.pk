@@ -93,7 +93,7 @@ const AboutUsHero = () => {
                     <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-3 mb-3">
                       <Users size={28} className="text-danger" />
                     </div>
-                    <h3 className="text-white h1 mb-1">100+</h3>
+                    <h3 className="text-white h1 mb-1">10+</h3>
                     <p className="text-white-50 mb-0">Expert Team Members</p>
                   </div>
                 </div>
@@ -102,7 +102,7 @@ const AboutUsHero = () => {
                     <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-3 mb-3">
                       <Award size={28} className="text-danger" />
                     </div>
-                    <h3 className="text-white h1 mb-1">15+</h3>
+                    <h3 className="text-white h1 mb-1">2+</h3>
                     <p className="text-white-50 mb-0">Years of Excellence</p>
                   </div>
                 </div>

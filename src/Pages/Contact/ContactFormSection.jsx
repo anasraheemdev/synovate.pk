@@ -80,7 +80,7 @@ const ContactFormSection = () => {
                     </div>
                     <div>
                       <h5 className="text-white mb-1">Email Us</h5>
-                      <p className="text-white-50 mb-0">support@example.com</p>
+                      <p className="text-white-50 mb-0">support@synovate.pk</p>
                     </div>
                   </div>
 
@@ -91,7 +91,7 @@ const ContactFormSection = () => {
                     </div>
                     <div>
                       <h5 className="text-white mb-1">Call Us</h5>
-                      <p className="text-white-50 mb-0">+1 (555) 123-4567</p>
+                      <p className="text-white-50 mb-0">+92 (334) 5546272</p>
                     </div>
                   </div>
 

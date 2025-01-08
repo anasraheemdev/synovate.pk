@@ -20,7 +20,7 @@ const ContactSection = () => {
       id: 2,
       icon: <Phone size={24} />,
       title: 'Call Us',
-      content: '+92 332 9551188'
+      content: '+92 (334) 5546272'
     },
     {
       id: 3,

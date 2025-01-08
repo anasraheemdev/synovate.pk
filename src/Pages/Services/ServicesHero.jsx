@@ -84,7 +84,7 @@ const ServicesHero = () => {
       />
 
       {/* Main Content */}
-      <div className="position-relative min-vh-100 d-flex align-items-center" style={{ paddingTop: '72px' }}>
+      <div className="position-relative min-vh-100 d-flex align-items-center" style={{ paddingTop: '140px' }}>
         <div className="container py-5">
           {/* Hero Content */}
           <div className="row justify-content-center mb-5">

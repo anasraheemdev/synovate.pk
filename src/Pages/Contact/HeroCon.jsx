@@ -13,24 +13,24 @@ const ContactHero = () => {
       icon: <Phone size={24} />,
       title: "Call Us",
       details: [
-        "+1 (555) 123-4567",
-        "+1 (555) 765-4321"
+        "+92 (334) 5546272",
+        "+92 (346) 2440356"
       ]
     },
     {
       icon: <Mail size={24} />,
       title: "Email Us",
       details: [
-        "support@example.com",
-        "info@example.com"
+        "support@synovate.pk",
+        "info@synovate.pk"
       ]
     },
     {
       icon: <MapPin size={24} />,
       title: "Visit Us",
       details: [
-        "123 Innovation Drive",
-        "Silicon Valley, CA 94025"
+        "Synovate PVT LTD",
+        "Islamabad, Pakistan"
       ]
     },
     {

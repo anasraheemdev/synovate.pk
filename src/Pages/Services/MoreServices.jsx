@@ -2,15 +2,16 @@ import React, { useCallback } from 'react';
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import { 
-  Shield, 
+  BookOpenCheck, 
   Globe, 
   Code2, 
   Workflow, 
   Terminal, 
-  BarChart3, 
-  Lock, 
+  Glasses, 
+  Armchair, 
   Smartphone, 
   Database, 
+  Figma,
   ArrowRight 
 } from 'lucide-react';
 
@@ -21,14 +22,14 @@ const MoreServices = () => {
 
   const additionalServices = [
     {
-      icon: <Shield size={24} />,
-      title: "Cybersecurity",
-      description: "Comprehensive security solutions to protect your digital assets and maintain data integrity"
-    },
-    {
       icon: <Globe size={24} />,
       title: "Web Development",
       description: "Custom websites and web applications built with cutting-edge technologies"
+    },
+    {
+      icon: <Smartphone size={24} />,
+      title: "Mobile Development",
+      description: "Native and cross-platform mobile applications for iOS and Android"
     },
     {
       icon: <Code2 size={24} />,
@@ -36,9 +37,19 @@ const MoreServices = () => {
       description: "Seamless integration services to connect your systems and streamline operations"
     },
     {
-      icon: <Workflow size={24} />,
-      title: "DevOps",
-      description: "Streamlined development and deployment processes for faster delivery"
+      icon: <BookOpenCheck size={24} />,
+      title: "Digital Marketing",
+      description: "Strategic digital marketing solutions to grow your online presence and drive conversions"
+    },
+    {
+      icon: <Figma size={24} />,
+      title: "UI/UX Design",
+      description: "Best UI/UX Designs for your web and mobile applications to enhance user experience" 
+    },
+    {
+      icon: <Glasses size={24} />,
+      title: "VR & AR Development",
+      description: "Immersive virtual and augmented reality experiences for your business"
     },
     {
       icon: <Terminal size={24} />,
@@ -46,19 +57,9 @@ const MoreServices = () => {
       description: "Transform legacy systems into modern, efficient applications"
     },
     {
-      icon: <BarChart3 size={24} />,
-      title: "Data Analytics",
-      description: "Transform raw data into actionable business insights"
-    },
-    {
-      icon: <Lock size={24} />,
-      title: "Identity & Access",
-      description: "Robust identity management and access control solutions"
-    },
-    {
-      icon: <Smartphone size={24} />,
-      title: "Mobile Development",
-      description: "Native and cross-platform mobile applications for iOS and Android"
+      icon: <Armchair size={24} />,
+      title: "HR & Recruitment",
+      description: "End-to-end HR and recruitment solutions to streamline your hiring process"
     },
     {
       icon: <Database size={24} />,

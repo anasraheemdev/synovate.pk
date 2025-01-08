@@ -5,10 +5,10 @@ const CompanyInfoSection = () => {
   const [openFaq, setOpenFaq] = useState(0);
 
   const stats = [
-    { icon: <Users size={24} />, number: "250+", label: "Team Members" },
-    { icon: <Building size={24} />, number: "15+", label: "Global Offices" },
+    { icon: <Users size={24} />, number: "10+", label: "Team Members" },
+    { icon: <Building size={24} />, number: "3+", label: "Global Offices" },
     { icon: <Award size={24} />, number: "50+", label: "Awards Won" },
-    { icon: <Trophy size={24} />, number: "1000+", label: "Projects Completed" }
+    { icon: <Trophy size={24} />, number: "150+", label: "Projects Completed" }
   ];
 
   const values = [
