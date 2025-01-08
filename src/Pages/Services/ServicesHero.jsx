@@ -30,58 +30,45 @@ const ServicesHero = () => {
     <div className="position-relative min-vh-100 bg-black" style={{ marginTop: '-72px' }}>
       {/* Particles Background */}
       <Particles
-        id="tsparticles"
-        className="position-absolute w-100 h-100"
-        init={particlesInit}
-        options={{
-          fullScreen: false,
-          background: {
-            color: {
-              value: "transparent",
-            },
-          },
-          fpsLimit: 120,
-          particles: {
-            color: {
-              value: "#dc3545",
-            },
-            links: {
-              color: "#dc3545",
-              distance: 150,
-              enable: true,
-              opacity: 0.15,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              direction: "none",
-              outModes: {
-                default: "bounce",
-              },
-              random: false,
-              speed: 1.5,
-              straight: false,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 800,
-              },
-              value: 80,
-            },
-            opacity: {
-              value: 0.3,
-            },
-            shape: {
-              type: "circle",
-            },
-            size: {
-              value: { min: 1, max: 2 },
-            },
-          },
-          detectRetina: true,
-        }}
-      />
+              className="position-absolute w-100 h-100"
+              init={particlesInit}
+              options={{
+                background: {
+                  color: {
+                    value: "transparent",
+                  },
+                },
+                particles: {
+                  color: {
+                    value: "#dc3545",
+                  },
+                  links: {
+                    color: "#dc3545",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.3,
+                    width: 1,
+                  },
+                  move: {
+                    enable: true,
+                    speed: 2,
+                  },
+                  number: {
+                    density: {
+                      enable: true,
+                      area: 800,
+                    },
+                    value: 80,
+                  },
+                  opacity: {
+                    value: 0.5,
+                  },
+                  size: {
+                    value: { min: 1, max: 3 },
+                  },
+                },
+              }}
+            />
 
       {/* Main Content */}
       <div className="position-relative min-vh-100 d-flex align-items-center" style={{ paddingTop: '140px' }}>

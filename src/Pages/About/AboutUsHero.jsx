@@ -12,45 +12,45 @@ const AboutUsHero = () => {
     <div className="position-relative min-vh-100 overflow-hidden bg-black">
       {/* Particles Background */}
       <Particles
-        className="position-absolute w-100 h-100"
-        init={particlesInit}
-        options={{
-          background: {
-            color: {
-              value: "transparent",
-            },
-          },
-          particles: {
-            color: {
-              value: "#dc3545",
-            },
-            links: {
-              color: "#dc3545",
-              distance: 150,
-              enable: true,
-              opacity: 0.15,
-              width: 1,
-            },
-            move: {
-              enable: true,
-              speed: 1.5,
-            },
-            number: {
-              density: {
-                enable: true,
-                area: 1000,
-              },
-              value: 50,
-            },
-            opacity: {
-              value: 0.3,
-            },
-            size: {
-              value: { min: 1, max: 2 },
-            },
-          },
-        }}
-      />
+              className="position-absolute w-100 h-100"
+              init={particlesInit}
+              options={{
+                background: {
+                  color: {
+                    value: "transparent",
+                  },
+                },
+                particles: {
+                  color: {
+                    value: "#dc3545",
+                  },
+                  links: {
+                    color: "#dc3545",
+                    distance: 150,
+                    enable: true,
+                    opacity: 0.3,
+                    width: 1,
+                  },
+                  move: {
+                    enable: true,
+                    speed: 2,
+                  },
+                  number: {
+                    density: {
+                      enable: true,
+                      area: 800,
+                    },
+                    value: 80,
+                  },
+                  opacity: {
+                    value: 0.5,
+                  },
+                  size: {
+                    value: { min: 1, max: 3 },
+                  },
+                },
+              }}
+            />
 
       {/* Main Content - Added pt-5 mt-5 for navbar spacing */}
       <div className="position-relative min-vh-100 d-flex align-items-center pt-5 mt-5">
