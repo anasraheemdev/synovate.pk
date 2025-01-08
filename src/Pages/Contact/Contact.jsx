@@ -1,10 +1,19 @@
 import React from 'react'
-
+import Navbar from '../../Components/Navbar/Navbar'
+import HeroCon from './HeroCon'
+import ContactFormSection from './ContactFormSection'
+import Faqs from './Faqs'
+import FooterSection from '../../Components/FooterSection/FooterSection'
 const Contact = () => {
   return (
-    <div>
-      
-    </div>
+    <>
+    <Navbar/>
+    <HeroCon/>
+    <Faqs/>
+    <ContactFormSection/>
+    <FooterSection/>
+    
+    </>
   )
 }
 

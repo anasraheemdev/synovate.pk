@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { Search, ChevronDown, Globe, Sun, Moon, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
@@ -40,15 +41,16 @@ const Navbar = () => {
       }
     },
     {
-      title: 'Solutions'
+      title: 'Services',
+      path: '/services'
     },
     {
       title: 'Company',
       submenu: [
-        { title: 'About Us' },
+        { title: 'About Us', path: '/about' },
+        { title: 'Contact', path: '/contact' },
         { title: 'Careers', badge: 'We\'re Hiring' },
-        { title: 'Press Room' },
-        { title: 'Contact' }
+        { title: 'Press Room' }
       ]
     }
   ];
@@ -59,13 +61,11 @@ const Navbar = () => {
         scrolled ? 'shadow-lg bg-white navbar-light' : 'navbar-dark bg-transparent'
       } transition-all duration-300`}>
         <div className="container-fluid px-4">
-          <a className="navbar-brand me-0 py-3" href="#">
-            <span className={`fw-bold fs-4 ${
-              !scrolled && 'text-white'
-            }`}>
+          <NavLink to="/" className="navbar-brand me-0 py-3">
+            <span className={`fw-bold fs-4 ${!scrolled && 'text-white'}`}>
               <span className="text-danger">Syn</span>ovate
             </span>
-          </a>
+          </NavLink>
 
           <button
             className="navbar-toggler border-0 px-0"
@@ -83,16 +83,27 @@ const Navbar = () => {
             <ul className="navbar-nav mx-auto align-items-lg-center">
               {mainMenuItems.map((item, index) => (
                 <li key={index} className={`nav-item ${item.megamenu ? 'position-static' : item.submenu ? 'dropdown' : ''}`}>
-                  <a
-                    className={`nav-link px-3 d-flex align-items-center ${
-                      scrolled ? 'text-dark' : 'text-white'
-                    }`}
-                    href="#"
-                    data-bs-toggle={item.megamenu ? 'mega-menu' : item.submenu ? 'dropdown' : undefined}
-                  >
-                    {item.title}
-                    {item.submenu && <ChevronDown size={14} className="ms-1 opacity-75" />}
-                  </a>
+                  {item.path ? (
+                    <NavLink
+                      to={item.path}
+                      className={`nav-link px-3 d-flex align-items-center ${
+                        scrolled ? 'text-dark' : 'text-white'
+                      }`}
+                    >
+                      {item.title}
+                    </NavLink>
+                  ) : (
+                    <a
+                      className={`nav-link px-3 d-flex align-items-center ${
+                        scrolled ? 'text-dark' : 'text-white'
+                      }`}
+                      href="#"
+                      data-bs-toggle={item.megamenu ? 'mega-menu' : item.submenu ? 'dropdown' : undefined}
+                    >
+                      {item.title}
+                      {(item.megamenu || item.submenu) && <ChevronDown size={14} className="ms-1 opacity-75" />}
+                    </a>
+                  )}
 
                   {item.megamenu && (
                     <div className="dropdown-menu mega-menu w-100 border-0 rounded-0 mt-0 p-0 animate__animated animate__fadeIn">
@@ -141,21 +152,39 @@ const Navbar = () => {
                     <ul className="dropdown-menu animate__animated animate__fadeIn">
                       {item.submenu.map((subItem, subIdx) => (
                         <li key={subIdx}>
-                          <a className="dropdown-item py-2" href="#">
-                            <div className="d-flex align-items-center">
-                              <div>
-                                {subItem.title}
-                                {subItem.description && (
-                                  <small className="d-block text-muted">
-                                    {subItem.description}
-                                  </small>
+                          {subItem.path ? (
+                            <NavLink to={subItem.path} className="dropdown-item py-2">
+                              <div className="d-flex align-items-center">
+                                <div>
+                                  {subItem.title}
+                                  {subItem.description && (
+                                    <small className="d-block text-muted">
+                                      {subItem.description}
+                                    </small>
+                                  )}
+                                </div>
+                                {subItem.badge && (
+                                  <span className="badge bg-danger ms-2">{subItem.badge}</span>
                                 )}
                               </div>
-                              {subItem.badge && (
-                                <span className="badge bg-danger ms-2">{subItem.badge}</span>
-                              )}
-                            </div>
-                          </a>
+                            </NavLink>
+                          ) : (
+                            <a className="dropdown-item py-2" href="#">
+                              <div className="d-flex align-items-center">
+                                <div>
+                                  {subItem.title}
+                                  {subItem.description && (
+                                    <small className="d-block text-muted">
+                                      {subItem.description}
+                                    </small>
+                                  )}
+                                </div>
+                                {subItem.badge && (
+                                  <span className="badge bg-danger ms-2">{subItem.badge}</span>
+                                )}
+                              </div>
+                            </a>
+                          )}
                         </li>
                       ))}
                     </ul>
