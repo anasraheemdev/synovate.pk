@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Search, ChevronDown, Globe, Sun, Moon, Menu, X } from 'lucide-react';
+import { Search, Globe, Sun, Moon, Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -14,45 +14,10 @@ const Navbar = () => {
   }, []);
 
   const mainMenuItems = [
-    {
-      title: 'Products',
-      megamenu: {
-        featured: {
-          title: 'Featured Products',
-          items: [
-            { name: 'Enterprise Suite', description: 'Complete business solution', icon: '🚀' },
-            { name: 'Cloud Platform', description: 'Scalable infrastructure', icon: '☁️' }
-          ]
-        },
-        columns: [
-          {
-            title: 'Development Tools',
-            items: ['Cloud IDE', 'Version Control', 'CI/CD Pipeline', 'Testing Suite']
-          },
-          {
-            title: 'Business Solutions',
-            items: ['Analytics Platform', 'Security Suite', 'Team Collaboration', 'API Management']
-          },
-          {
-            title: 'Enterprise Tools',
-            items: ['Data Processing', 'ML Operations', 'IoT Platform', 'Blockchain Solutions']
-          }
-        ]
-      }
-    },
-    {
-      title: 'Services',
-      path: '/services'
-    },
-    {
-      title: 'Company',
-      submenu: [
-        { title: 'About Us', path: '/about' },
-        { title: 'Contact', path: '/contact' },
-        { title: 'Careers', badge: 'We\'re Hiring' },
-        { title: 'Press Room' }
-      ]
-    }
+    { title: 'Home', path: '/' },
+    { title: 'About', path: '/about' },
+    { title: 'Services', path: '/services' },
+    { title: 'Contact', path: '/contact' }
   ];
 
   return (
@@ -82,113 +47,15 @@ const Navbar = () => {
           <div className="collapse navbar-collapse" id="navbarMain">
             <ul className="navbar-nav mx-auto align-items-lg-center">
               {mainMenuItems.map((item, index) => (
-                <li key={index} className={`nav-item ${item.megamenu ? 'position-static' : item.submenu ? 'dropdown' : ''}`}>
-                  {item.path ? (
-                    <NavLink
-                      to={item.path}
-                      className={`nav-link px-3 d-flex align-items-center ${
-                        scrolled ? 'text-dark' : 'text-white'
-                      }`}
-                    >
-                      {item.title}
-                    </NavLink>
-                  ) : (
-                    <a
-                      className={`nav-link px-3 d-flex align-items-center ${
-                        scrolled ? 'text-dark' : 'text-white'
-                      }`}
-                      href="#"
-                      data-bs-toggle={item.megamenu ? 'mega-menu' : item.submenu ? 'dropdown' : undefined}
-                    >
-                      {item.title}
-                      {(item.megamenu || item.submenu) && <ChevronDown size={14} className="ms-1 opacity-75" />}
-                    </a>
-                  )}
-
-                  {item.megamenu && (
-                    <div className="dropdown-menu mega-menu w-100 border-0 rounded-0 mt-0 p-0 animate__animated animate__fadeIn">
-                      <div className="container-fluid">
-                        <div className="row g-4 p-4">
-                          <div className="col-lg-3">
-                            <h6 className="text-danger fw-bold mb-3">
-                              {item.megamenu.featured.title}
-                            </h6>
-                            {item.megamenu.featured.items.map((featured, idx) => (
-                              <a
-                                key={idx}
-                                href="#"
-                                className="d-block p-3 rounded-3 mb-2 text-decoration-none border bg-light hover-lift"
-                              >
-                                <span className="fs-4 mb-2 d-block">{featured.icon}</span>
-                                <h6 className="mb-1">{featured.name}</h6>
-                                <small className="text-muted">{featured.description}</small>
-                              </a>
-                            ))}
-                          </div>
-
-                          {item.megamenu.columns.map((column, idx) => (
-                            <div key={idx} className="col-lg-3">
-                              <h6 className="text-danger fw-bold mb-3">{column.title}</h6>
-                              <ul className="list-unstyled mb-0">
-                                {column.items.map((subItem, subIdx) => (
-                                  <li key={subIdx}>
-                                    <a
-                                      href="#"
-                                      className="dropdown-item py-2 ps-0 hover-translate"
-                                    >
-                                      {subItem}
-                                    </a>
-                                  </li>
-                                ))}
-                              </ul>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-
-                  {item.submenu && (
-                    <ul className="dropdown-menu animate__animated animate__fadeIn">
-                      {item.submenu.map((subItem, subIdx) => (
-                        <li key={subIdx}>
-                          {subItem.path ? (
-                            <NavLink to={subItem.path} className="dropdown-item py-2">
-                              <div className="d-flex align-items-center">
-                                <div>
-                                  {subItem.title}
-                                  {subItem.description && (
-                                    <small className="d-block text-muted">
-                                      {subItem.description}
-                                    </small>
-                                  )}
-                                </div>
-                                {subItem.badge && (
-                                  <span className="badge bg-danger ms-2">{subItem.badge}</span>
-                                )}
-                              </div>
-                            </NavLink>
-                          ) : (
-                            <a className="dropdown-item py-2" href="#">
-                              <div className="d-flex align-items-center">
-                                <div>
-                                  {subItem.title}
-                                  {subItem.description && (
-                                    <small className="d-block text-muted">
-                                      {subItem.description}
-                                    </small>
-                                  )}
-                                </div>
-                                {subItem.badge && (
-                                  <span className="badge bg-danger ms-2">{subItem.badge}</span>
-                                )}
-                              </div>
-                            </a>
-                          )}
-                        </li>
-                      ))}
-                    </ul>
-                  )}
+                <li key={index} className="nav-item">
+                  <NavLink
+                    to={item.path}
+                    className={({ isActive }) => `nav-link px-3 d-flex align-items-center ${
+                      scrolled ? 'text-dark' : 'text-white'
+                    } ${isActive ? 'active' : ''}`}
+                  >
+                    {item.title}
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -255,20 +122,11 @@ const Navbar = () => {
       )}
 
       <style jsx>{`
-        .hover-lift {
-          transition: transform 0.2s ease-in-out;
-        }
-        .hover-lift:hover {
-          transform: translateY(-3px);
-        }
         .hover-translate {
           transition: transform 0.2s ease-in-out;
         }
         .hover-translate:hover {
           transform: translateX(5px);
-        }
-        .mega-menu {
-          animation-duration: 0.2s;
         }
         .dropdown-menu {
           animation-duration: 0.2s;
