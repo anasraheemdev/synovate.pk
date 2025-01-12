@@ -124,40 +124,41 @@ const MoreServices = () => {
         }}
       />
 
-      <div className="container position-relative">
+      <div className="container position-relative px-3 px-sm-4">
         {/* Section Header */}
-        <div className="row justify-content-center mb-5">
-          <div className="col-lg-8 text-center">
-            <div className="mb-4">
-              <span className="badge bg-danger bg-opacity-10 text-danger px-4 py-2 rounded-pill fs-6">
+        <div className="row justify-content-center mb-4 mb-md-5">
+          <div className="col-12 col-lg-8 text-center">
+            <div className="mb-3 mb-md-4">
+              <span className="badge bg-danger bg-opacity-10 text-danger px-3 px-md-4 py-2 rounded-pill">
                 Comprehensive Solutions
               </span>
             </div>
-            <h2 className="display-5 fw-bold text-dark mb-4">
+            <h2 className="display-6 display-md-5 fw-bold text-dark mb-3 mb-md-4">
               Complete Range of
               <span className="d-block text-danger mt-2">Technology Services</span>
             </h2>
-            <p className="lead text-muted mb-0">
+            <p className="lead text-muted mb-0 fs-6 fs-md-5 px-2">
               From development to security, we provide end-to-end solutions to drive your digital transformation journey
             </p>
           </div>
         </div>
 
-        {/* Services Grid */}
-        <div className="row g-4">
+        {/* Services Grid - Two cards per row on mobile */}
+        <div className="row row-cols-2 row-cols-md-2 row-cols-lg-3 g-3 g-md-4">
           {additionalServices.map((service, index) => (
-            <div key={index} className="col-md-6 col-lg-4">
-              <div className="bg-light rounded-4 p-4 h-100 border hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-3 mb-3">
+            <div key={index} className="col">
+              <div className="bg-light rounded-4 p-3 p-md-4 h-100 border" 
+                   style={{ transition: 'all 0.3s ease' }}>
+                <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-2 p-md-3 mb-3">
                   <div className="text-danger">
                     {service.icon}
                   </div>
                 </div>
-                <h3 className="h5 fw-bold mb-3">{service.title}</h3>
-                <p className="text-muted mb-0">{service.description}</p>
-                <div className="mt-4">
-                  <a href="#" className="text-danger text-decoration-none d-inline-flex align-items-center gap-2">
-                    Learn More <ArrowRight size={16} />
+                <h3 className="h6 h5-md fw-bold mb-2 mb-md-3">{service.title}</h3>
+                <p className="text-muted mb-0 small">{service.description}</p>
+                <div className="mt-3">
+                  <a href="#" className="text-danger text-decoration-none d-inline-flex align-items-center gap-1 gap-md-2 small">
+                    Learn More <ArrowRight size={14} />
                   </a>
                 </div>
               </div>
@@ -165,6 +166,21 @@ const MoreServices = () => {
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .display-6 {
+            font-size: 1.75rem;
+          }
+          .lead {
+            font-size: 1rem;
+          }
+        }
+        .bg-light:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+      `}</style>
     </div>
   );
 };

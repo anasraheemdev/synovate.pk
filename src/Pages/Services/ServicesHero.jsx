@@ -27,55 +27,55 @@ const ServicesHero = () => {
   ];
 
   return (
-    <div className="position-relative min-vh-100 bg-black" style={{ marginTop: '-72px' }}>
+    <div className="position-relative min-vh-100 bg-black">
       {/* Particles Background */}
       <Particles
-              className="position-absolute w-100 h-100"
-              init={particlesInit}
-              options={{
-                background: {
-                  color: {
-                    value: "transparent",
-                  },
-                },
-                particles: {
-                  color: {
-                    value: "#dc3545",
-                  },
-                  links: {
-                    color: "#dc3545",
-                    distance: 150,
-                    enable: true,
-                    opacity: 0.3,
-                    width: 1,
-                  },
-                  move: {
-                    enable: true,
-                    speed: 2,
-                  },
-                  number: {
-                    density: {
-                      enable: true,
-                      area: 800,
-                    },
-                    value: 80,
-                  },
-                  opacity: {
-                    value: 0.5,
-                  },
-                  size: {
-                    value: { min: 1, max: 3 },
-                  },
-                },
-              }}
-            />
+        className="position-absolute w-100 h-100"
+        init={particlesInit}
+        options={{
+          background: {
+            color: {
+              value: "transparent",
+            },
+          },
+          particles: {
+            color: {
+              value: "#dc3545",
+            },
+            links: {
+              color: "#dc3545",
+              distance: 150,
+              enable: true,
+              opacity: 0.3,
+              width: 1,
+            },
+            move: {
+              enable: true,
+              speed: 2,
+            },
+            number: {
+              density: {
+                enable: true,
+                area: 800,
+              },
+              value: 80,
+            },
+            opacity: {
+              value: 0.5,
+            },
+            size: {
+              value: { min: 1, max: 3 },
+            },
+          },
+        }}
+      />
 
       {/* Main Content */}
-      <div className="position-relative min-vh-100 d-flex align-items-center" style={{ paddingTop: '140px' }}>
+      <div className="position-relative min-vh-100 d-flex align-items-center" style={{ paddingTop: '100px' }}>
         <div className="container py-5">
           {/* Hero Content */}
           <div className="row justify-content-center mb-5">
-            <div className="col-lg-8 text-center">
+            <div className="col-12 col-lg-8 text-center">
               {/* Services Badge */}
               <div className="mb-4">
                 <span className="badge bg-danger bg-opacity-25 text-danger px-4 py-2 rounded-pill fs-6">
@@ -84,23 +84,25 @@ const ServicesHero = () => {
               </div>
 
               {/* Main Title */}
-              <h1 className="display-3 fw-bold text-white mb-4">
+              <h1 className="display-4 display-md-3 fw-bold text-white mb-4">
                 Innovative Solutions for
                 <span className="d-block text-danger mt-2">Digital Success</span>
               </h1>
 
               {/* Description */}
-              <p className="lead text-white-50 mb-5">
+              <p className="lead text-white-50 mb-5 px-2">
                 We offer cutting-edge technology solutions to help businesses transform, 
                 innovate, and stay ahead in the digital age.
               </p>
 
-              {/* CTA Buttons */}
-              <div className="d-flex justify-content-center gap-3 mb-5">
-                <button className="btn btn-danger btn-lg rounded-pill px-4 py-3 d-inline-flex align-items-center gap-2">
-                  Explore Services <ArrowRight size={20} />
+              {/* CTA Buttons - Always in row */}
+              <div className="d-flex justify-content-center gap-3 mb-5 flex-wrap">
+                <button className="btn btn-danger btn-lg rounded-pill px-4 py-2">
+                  <span className="d-flex align-items-center gap-2">
+                    Explore Services <ArrowRight size={20} />
+                  </span>
                 </button>
-                <button className="btn btn-outline-light btn-lg rounded-pill px-4 py-3">
+                <button className="btn btn-outline-light btn-lg rounded-pill px-4 py-2">
                   Get a Quote
                 </button>
               </div>
@@ -108,10 +110,11 @@ const ServicesHero = () => {
           </div>
 
           {/* Services Grid */}
-          <div className="row g-4">
+          <div className="row g-4 px-2 px-md-0">
             {services.map((service, index) => (
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="bg-dark bg-opacity-50 rounded-4 p-4 h-100 border border-danger border-opacity-25 hover:transform hover:scale-105 transition-all duration-300">
+              <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div className="bg-dark bg-opacity-50 rounded-4 p-4 h-100 border border-danger border-opacity-25 hover-scale" 
+                     style={{ transition: 'transform 0.3s' }}>
                   <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-3 mb-3">
                     <div className="text-danger">
                       {service.icon}
@@ -130,6 +133,17 @@ const ServicesHero = () => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .hover-scale:hover {
+          transform: scale(1.05);
+        }
+        @media (max-width: 768px) {
+          .display-4 {
+            font-size: 2.5rem;
+          }
+        }
+      `}</style>
     </div>
   );
 };
