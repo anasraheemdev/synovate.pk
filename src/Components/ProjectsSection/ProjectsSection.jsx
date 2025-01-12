@@ -94,125 +94,142 @@ const ProjectsSection = () => {
 
   return (
     <section className="py-5 bg-light">
-      <div className="container py-5">
+      <div className="container py-4">
         {/* Section Header */}
         <div className="row justify-content-center mb-5">
           <div className="col-lg-7 text-center">
-            <span className="badge bg-danger px-3 py-2 rounded-pill mb-3 animate__animated animate__fadeIn">
+            <span className="badge bg-danger px-3 py-2 rounded-pill mb-3">
               Our Portfolio
             </span>
-            <h2 className="display-5 fw-bold mb-3 animate__animated animate__fadeIn">
+            <h2 className="display-6 fw-bold mb-3">
               Showcasing Excellence in Digital Innovation
             </h2>
-            <p className="lead text-muted animate__animated animate__fadeIn">
+            <p className="lead text-muted">
               Explore our portfolio of successful projects delivered across various industries
               with cutting-edge technologies.
             </p>
           </div>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="row justify-content-center mb-5">
-          <div className="col-lg-8">
-            <div className="d-flex flex-wrap justify-content-center gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  className={`btn ${
-                    activeFilter === category.id 
-                      ? 'btn-danger' 
-                      : 'btn-outline-danger'
-                  } rounded-pill px-4 py-2 animate__animated animate__fadeIn`}
-                  onClick={() => setActiveFilter(category.id)}
-                >
-                  {category.label}
-                </button>
-              ))}
+        {/* Filter Buttons - Scrollable on mobile */}
+        <div className="row justify-content-center mb-4">
+          <div className="col-12">
+            <div className="scrolling-wrapper pb-2" style={{ overflowX: 'auto', whiteSpace: 'nowrap' }}>
+              <div className="d-flex justify-content-start justify-content-md-center gap-2 px-2">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    className={`btn ${
+                      activeFilter === category.id 
+                        ? 'btn-danger' 
+                        : 'btn-outline-danger'
+                    } rounded-pill px-3 py-1 flex-shrink-0`}
+                    onClick={() => setActiveFilter(category.id)}
+                    style={{ fontSize: '0.9rem' }}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="row g-4">
+        {/* Projects Grid - 2 columns on mobile */}
+        <div className="row row-cols-2 row-cols-md-3 g-3 g-md-4">
           {filteredProjects.map((project, index) => (
-            <div 
-              key={project.id} 
-              className="col-lg-4 col-md-6 animate__animated animate__fadeIn"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
+            <div key={project.id} className="col">
               <div 
-                className="card border-0 shadow-sm rounded-4 overflow-hidden h-100"
+                className="card h-100 border-0 shadow-sm rounded-4"
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
                 style={{ 
-                  transform: hoveredProject === project.id ? 'translateY(-10px)' : 'none',
-                  transition: 'all 0.3s ease-in-out'
+                  transform: hoveredProject === project.id ? 'translateY(-5px)' : 'none',
+                  transition: 'transform 0.3s ease'
                 }}
               >
                 {/* Project Image */}
                 <div className="position-relative">
                   <img 
-                    src={project.image} 
-                    alt={project.title} 
+                    src={project.image}
+                    alt={project.title}
                     className="card-img-top"
-                    style={{ height: '240px', objectFit: 'cover' }}
+                    style={{ height: '160px', objectFit: 'cover', borderTopLeftRadius: '1rem', borderTopRightRadius: '1rem' }}
                   />
-                  <div className={`position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center 
-                    bg-dark bg-opacity-75 text-white transition-opacity ${
-                      hoveredProject === project.id ? 'opacity-100' : 'opacity-0'
-                    }`}>
-                    <div className="text-center p-3">
-                      <h5 className="mb-2">{project.type}</h5>
-                      <p className="mb-3">{project.client}</p>
-                      <button className="btn btn-outline-light rounded-pill">
+                  <div 
+                    className={`position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center 
+                      bg-dark bg-opacity-75 text-white`}
+                    style={{
+                      opacity: hoveredProject === project.id ? 1 : 0,
+                      transition: 'opacity 0.3s ease',
+                      borderTopLeftRadius: '1rem',
+                      borderTopRightRadius: '1rem'
+                    }}
+                  >
+                    <div className="text-center p-2">
+                      <h6 className="mb-1">{project.type}</h6>
+                      <p className="small mb-2">{project.client}</p>
+                      <button className="btn btn-sm btn-outline-light rounded-pill">
                         View Details
-                        <ArrowRight className="ms-2" size={18} />
+                        <ArrowRight className="ms-1" size={14} />
                       </button>
                     </div>
                   </div>
                 </div>
 
                 {/* Project Details */}
-                <div className="card-body p-4">
-                  <h4 className="card-title mb-3">{project.title}</h4>
-                  <p className="text-muted mb-4">{project.description}</p>
+                <div className="card-body p-3">
+                  <h5 className="card-title mb-2 text-truncate">{project.title}</h5>
+                  <p className="card-text small text-muted mb-3" style={{
+                    display: '-webkit-box',
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden'
+                  }}>
+                    {project.description}
+                  </p>
 
                   {/* Technologies */}
-                  <div className="mb-4">
-                    <div className="d-flex flex-wrap gap-2">
-                      {project.technologies.map((tech, idx) => (
+                  <div className="mb-3">
+                    <div className="d-flex flex-wrap gap-1">
+                      {project.technologies.slice(0, 2).map((tech, idx) => (
                         <span 
                           key={idx}
-                          className="badge bg-light text-dark px-3 py-2 rounded-pill"
+                          className="badge bg-light text-dark small py-1 px-2"
                         >
                           {tech}
                         </span>
                       ))}
+                      {project.technologies.length > 2 && (
+                        <span className="badge bg-light text-dark small py-1 px-2">
+                          +{project.technologies.length - 2}
+                        </span>
+                      )}
                     </div>
                   </div>
 
-                  {/* Project Stats */}
-                  <div className="row g-3 mb-4">
-                    {Object.entries(project.stats).map(([key, value], idx) => (
-                      <div key={idx} className="col-auto">
-                        <div className="d-flex align-items-center">
-                          <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-2">
-                            <Code size={16} className="text-danger" />
-                          </div>
-                          <div>
-                            <small className="text-muted d-block">{key}</small>
-                            <strong>{value}</strong>
-                          </div>
+                  {/* Project Stats - Show only one stat on mobile */}
+                  <div className="d-flex flex-wrap gap-2">
+                    {Object.entries(project.stats).slice(0, 1).map(([key, value], idx) => (
+                      <div key={idx} className="d-flex align-items-center">
+                        <div className="bg-danger bg-opacity-10 rounded-circle p-1 me-2">
+                          <Code size={12} className="text-danger" />
+                        </div>
+                        <div>
+                          <small className="text-muted d-block" style={{ fontSize: '0.7rem' }}>{key}</small>
+                          <strong className="small">{value}</strong>
                         </div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Awards */}
+                  {/* Awards - Show only on larger screens */}
                   {project.awards.length > 0 && (
-                    <div className="d-flex align-items-center mt-auto">
-                      <Award size={20} className="text-warning me-2" />
-                      <small className="text-muted">{project.awards[0]}</small>
+                    <div className="d-none d-md-flex align-items-center mt-3">
+                      <Award size={16} className="text-warning me-2" />
+                      <small className="text-muted" style={{ fontSize: '0.75rem' }}>
+                        {project.awards[0]}
+                      </small>
                     </div>
                   )}
                 </div>
@@ -222,30 +239,25 @@ const ProjectsSection = () => {
         </div>
 
         {/* CTA Section */}
-        <div className="row justify-content-center mt-5 pt-5">
+        <div className="row justify-content-center mt-5 pt-4">
           <div className="col-lg-7 text-center">
             <h4 className="mb-4">Ready to Build Something Amazing?</h4>
-            <button className="btn btn-danger btn-lg rounded-pill px-5 py-3 animate__animated animate__fadeIn">
+            <button className="btn btn-danger btn-lg rounded-pill px-4 py-2">
               Start Your Project
-              <ExternalLink className="ms-2" size={20} />
+              <ExternalLink className="ms-2" size={18} />
             </button>
           </div>
         </div>
       </div>
 
       <style jsx>{`
-        .transition-opacity {
-          transition: opacity 0.3s ease-in-out;
-        }
-        
-        .card {
-          backface-visibility: hidden;
-          -webkit-font-smoothing: subpixel-antialiased;
-        }
-
-        .animate__animated {
-          animation-duration: 0.8s;
-          animation-fill-mode: both;
+        .scrolling-wrapper {
+          -webkit-overflow-scrolling: touch;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
       `}</style>
     </section>

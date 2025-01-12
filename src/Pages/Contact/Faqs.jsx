@@ -62,10 +62,10 @@ const CompanyInfoSection = () => {
         </div>
 
         {/* Stats */}
-        <div className="row g-4 mb-5">
+        <div className="row g-4 mb-5"> 
           {stats.map((stat, index) => (
             <div key={index} className="col-md-3">
-              <div className="text-center p-4 rounded-4 shadow-sm hover:shadow-lg transition-all">
+              <div className="text-center p-4 rounded-4 shadow-sm hover:shadow-lg transition-all" >
                 <div className="d-inline-flex align-items-center justify-content-center bg-danger bg-opacity-10 rounded-circle p-3 mb-3">
                   <div className="text-danger">
                     {stat.icon}

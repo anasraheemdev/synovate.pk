@@ -6,6 +6,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const [searchActive, setSearchActive] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [menuHeight, setMenuHeight] = useState('0px');
+  const menuRef = React.useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -13,12 +16,23 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (menuRef.current) {
+      const height = isMenuOpen ? menuRef.current.scrollHeight + 'px' : '0px';
+      setMenuHeight(height);
+    }
+  }, [isMenuOpen]);
+
   const mainMenuItems = [
     { title: 'Home', path: '/' },
     { title: 'About', path: '/about' },
     { title: 'Services', path: '/services' },
     { title: 'Contact', path: '/contact' }
   ];
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
 
   return (
     <>
@@ -35,16 +49,27 @@ const Navbar = () => {
           <button
             className="navbar-toggler border-0 px-0"
             type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarMain"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-controls="navbarMain"
-            aria-expanded="false"
+            aria-expanded={isMenuOpen}
             aria-label="Toggle navigation"
           >
-            <Menu className={scrolled ? 'text-dark' : 'text-white'} size={24} />
+            {isMenuOpen ? 
+              <X className={scrolled ? 'text-dark' : 'text-white'} size={24} /> :
+              <Menu className={scrolled ? 'text-dark' : 'text-white'} size={24} />
+            }
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarMain">
+          <div 
+            ref={menuRef}
+            className="navbar-collapse" 
+            id="navbarMain"
+            style={{
+              height: menuHeight,
+              overflow: 'hidden',
+              transition: 'height 0.3s ease-in-out'
+            }}
+          >
             <ul className="navbar-nav mx-auto align-items-lg-center">
               {mainMenuItems.map((item, index) => (
                 <li key={index} className="nav-item">
@@ -53,6 +78,7 @@ const Navbar = () => {
                     className={({ isActive }) => `nav-link px-3 d-flex align-items-center ${
                       scrolled ? 'text-dark' : 'text-white'
                     } ${isActive ? 'active' : ''}`}
+                    onClick={closeMenu}
                   >
                     {item.title}
                   </NavLink>
@@ -66,7 +92,10 @@ const Navbar = () => {
                   className={`btn btn-link nav-link px-2 ${
                     scrolled ? 'text-dark' : 'text-white'
                   }`}
-                  onClick={() => setSearchActive(true)}
+                  onClick={() => {
+                    setSearchActive(true);
+                    closeMenu();
+                  }}
                 >
                   <Search size={20} />
                 </button>
@@ -122,6 +151,20 @@ const Navbar = () => {
       )}
 
       <style jsx>{`
+        @media (min-width: 992px) {
+          .navbar-collapse {
+            height: auto !important;
+            overflow: visible !important;
+          }
+        }
+        
+        @media (max-width: 991.98px) {
+          .navbar-nav {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+          }
+        }
+        
         .hover-translate {
           transition: transform 0.2s ease-in-out;
         }

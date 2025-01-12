@@ -18,24 +18,24 @@ const FooterSection = () => {
               Transforming ideas into powerful digital solutions. We craft innovative 
               software that drives business growth and user engagement.
             </p>
-            <div className="d-flex gap-3">
+            <div className="d-flex gap-2 gap-md-3">
               <a href="#" className="btn btn-outline-danger rounded-circle p-2 animate__animated animate__bounceIn">
-                <Facebook size={20} />
+                <Facebook size={18} />
               </a>
               <a href="#" className="btn btn-outline-danger rounded-circle p-2 animate__animated animate__bounceIn animate__delay-1s">
-                <Twitter size={20} />
+                <Twitter size={18} />
               </a>
               <a href="#" className="btn btn-outline-danger rounded-circle p-2 animate__animated animate__bounceIn animate__delay-2s">
-                <Instagram size={20} />
+                <Instagram size={18} />
               </a>
               <a href="#" className="btn btn-outline-danger rounded-circle p-2 animate__animated animate__bounceIn animate__delay-3s">
-                <Linkedin size={20} />
+                <Linkedin size={18} />
               </a>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div className="col-lg-2 col-md-6 animate__animated animate__fadeInUp">
+          <div className="col-6 col-lg-2 animate__animated animate__fadeInUp">
             <h5 className="mb-4">Quick Links</h5>
             <ul className="list-unstyled">
               {['About Us', 'Services', 'Projects', 'Blog', 'Careers'].map((link, index) => (
@@ -53,7 +53,7 @@ const FooterSection = () => {
           </div>
 
           {/* Services */}
-          <div className="col-lg-2 col-md-6 animate__animated animate__fadeInUp animate__delay-1s">
+          <div className="col-6 col-lg-2 animate__animated animate__fadeInUp animate__delay-1s">
             <h5 className="mb-4">Services</h5>
             <ul className="list-unstyled">
               {['Web Development', 'Mobile Apps', 'Cloud Solutions', 'AI & ML', 'UI/UX Design'].map((service, index) => (
@@ -71,7 +71,7 @@ const FooterSection = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="col-lg-4 animate__animated animate__fadeInRight">
+          <div className="col-12 col-lg-4 mt-4 mt-lg-0 animate__animated animate__fadeInRight">
             <h5 className="mb-4">Contact Info</h5>
             <div className="d-flex align-items-center mb-3">
               <div className="bg-danger bg-opacity-10 rounded-circle p-2 me-3">
@@ -99,10 +99,10 @@ const FooterSection = () => {
           <div className="col-lg-6 text-center">
             <h4 className="mb-3">Subscribe to Our Newsletter</h4>
             <p className="text-white-50 mb-4">Stay updated with our latest news and updates</p>
-            <form className="d-flex gap-2 justify-content-center">
+            <form className="d-flex gap-2 justify-content-center flex-column flex-sm-row align-items-center">
               <input 
                 type="email" 
-                className="form-control bg-dark text-white border-danger"
+                className="form-control bg-dark text-white border-danger mb-2 mb-sm-0"
                 placeholder="Enter your email"
                 style={{ maxWidth: '300px' }}
               />
@@ -113,12 +113,12 @@ const FooterSection = () => {
 
         {/* Bottom Bar */}
         <div className="row py-4 border-top border-danger border-opacity-25">
-          <div className="col-md-6 text-center text-md-start">
+          <div className="col-12 col-md-6 text-center text-md-start mb-3 mb-md-0">
             <p className="mb-0 text-white-50">
               © 2025 Synovate. All rights reserved.
             </p>
           </div>
-          <div className="col-md-6 text-center text-md-end">
+          <div className="col-12 col-md-6 text-center text-md-end">
             <button 
               onClick={scrollToTop}
               className="btn btn-outline-danger rounded-circle p-2 animate__animated animate__bounce animate__infinite"
@@ -129,13 +129,19 @@ const FooterSection = () => {
         </div>
       </div>
 
-      {/* Add required styles for animations */}
       <style jsx>{`
         .hover-text-danger {
           transition: color 0.3s ease;
         }
         .hover-text-danger:hover {
           color: #dc3545 !important;
+        }
+        
+        @media (max-width: 768px) {
+          .container {
+            padding-left: 15px;
+            padding-right: 15px;
+          }
         }
       `}</style>
     </footer>

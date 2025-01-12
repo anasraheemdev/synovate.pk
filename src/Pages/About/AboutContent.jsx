@@ -1,36 +1,35 @@
 import React from 'react';
-import { Check, Code, Users, Target, Rocket } from 'lucide-react';
+import { Check, Code, Users, Rocket, Palette, Globe, Smartphone, Glasses } from 'lucide-react';
 
 const AboutContent = () => {
   const features = [
     {
-      title: "Technical Excellence",
-      description: "Our team brings deep expertise across modern technologies and frameworks.",
-      icon: <Code size={24} />
+      title: "Web Development",
+      description: "Creating seamless, responsive, and secure websites that are visually stunning and functionally powerful.",
+      icon: <Globe size={24} />
     },
     {
-      title: "Dedicated Teams",
-      description: "Committed professionals working together to deliver outstanding results.",
-      icon: <Users size={24} />
+      title: "App Development",
+      description: "Building intuitive mobile applications for iOS, Android, and cross-platform that deliver flawless user experiences.",
+      icon: <Smartphone size={24} />
     },
     {
-      title: "Strategic Focus",
-      description: "We align our solutions with your business objectives and goals.",
-      icon: <Target size={24} />
+      title: "UI/UX Design",
+      description: "Crafting engaging, user-friendly interfaces that enhance interaction and ensure market distinction.",
+      icon: <Palette size={24} />
     },
     {
-      title: "Innovation First",
-      description: "Constantly exploring new technologies to keep you ahead of the curve.",
-      icon: <Rocket size={24} />
+      title: "Virtual Reality",
+      description: "Developing immersive VR, AR, and MR solutions that redefine experiences across multiple industries.",
+      icon: <Glasses size={24} />
     }
   ];
 
-  const milestones = [
-    { year: "2008", event: "Company Founded" },
-    { year: "2012", event: "International Expansion" },
-    { year: "2015", event: "Cloud Division Launch" },
-    { year: "2019", event: "AI Innovation Center" },
-    { year: "2023", event: "Digital Transform Hub" }
+  const services = [
+    "Web Development",
+    "App Development",
+    "Digital Marketing",
+    "Virtual Reality Solutions"
   ];
 
   return (
@@ -40,17 +39,14 @@ const AboutContent = () => {
         <div className="row align-items-center">
           <div className="col-lg-6 mb-4 mb-lg-0">
             <span className="badge bg-danger px-3 py-2 rounded-pill mb-3">Our Mission</span>
-            <h2 className="display-5 fw-bold mb-4">Empowering Businesses Through Technology</h2>
+            <h2 className="display-5 fw-bold mb-4">Transforming Businesses Through Innovation</h2>
             <p className="lead mb-4">
-              We're dedicated to transforming businesses with innovative technology solutions that drive growth and success.
+              At Synovate Technologies, we are committed to delivering exceptional IT solutions that transform
+              businesses and empower innovation. Founded by Muhammad Ali Usman, we specialize in providing innovative,
+              reliable, and cutting-edge technology solutions that drive growth and efficiency for our clients.
             </p>
             <ul className="list-unstyled">
-              {[
-                "Custom Software Development",
-                "Cloud Solutions & Migration",
-                "Digital Transformation",
-                "AI & Machine Learning"
-              ].map((item, index) => (
+              {services.map((item, index) => (
                 <li key={index} className="d-flex align-items-center mb-3">
                   <Check className="text-danger me-2" size={20} />
                   <span>{item}</span>
@@ -75,6 +71,24 @@ const AboutContent = () => {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* CEO Section */}
+        <div className="row mt-5">
+          <div className="col-12">
+            <div className="card border-0 shadow-sm">
+              <div className="card-body p-4">
+                <h3 className="h4 mb-3">Meet Our CEO</h3>
+                <p className="mb-0">
+                  Muhammad Ali Usman, the visionary founder and CEO of Synovate Technologies, is passionate about
+                  leveraging technology to solve real-world problems. With a strong background in software
+                  development and entrepreneurship, he has built Synovate Technologies into a trusted name in the IT
+                  industry. Under his leadership, Synovate Technologies is not just a service provider but a partner
+                  that empowers businesses with creative solutions and actionable results.
+                </p>
+              </div>
             </div>
           </div>
         </div>
