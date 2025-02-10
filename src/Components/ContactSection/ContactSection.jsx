@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Clock } from 'lucide-react';
+import { addDoc, collection, serverTimestamp } from "firebase/firestore";
+import { db } from "../../firebase"; // Make sure this path matches your project structure
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +10,10 @@ const ContactSection = () => {
     subject: '',
     message: ''
   });
+  
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [error, setError] = useState(null);
 
   const contactInfo = [
     {
@@ -26,7 +32,7 @@ const ContactSection = () => {
       id: 3,
       icon: <MapPin size={24} />,
       title: 'Visit Us',
-      content: 'Islmabad, Pakistan'
+      content: 'Islamabad, Pakistan'
     },
     {
       id: 4,
@@ -36,9 +42,69 @@ const ContactSection = () => {
     }
   ];
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
+    
+    // Validate form data
+    if (!formData.name || !formData.email || !formData.subject || !formData.message) {
+      setError("Please fill in all fields");
+      return;
+    }
+  
+    setIsSubmitting(true);
+    setError(null);
+  
+    try {
+      const submissionData = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        createdAt: new Date().toISOString(), // Use ISO string instead of serverTimestamp
+        status: 'unread'
+      };
+  
+      // Log the attempt
+      console.log("Attempting to send message:", submissionData);
+  
+      // Send to Firebase
+      const docRef = await addDoc(collection(db, "contact_messages"), submissionData);
+      
+      console.log("Message sent successfully with ID:", docRef.id);
+  
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+  
+      setIsSubmitted(true);
+      
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+  
+    } catch (err) {
+      console.error("Detailed error:", {
+        message: err.message,
+        code: err.code,
+        fullError: err
+      });
+      setError(`Failed to send message: ${err.message}`);
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  const handleInputChange = (e) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+    // Clear error when user starts typing
+    if (error) setError(null);
   };
 
   return (
@@ -89,6 +155,19 @@ const ContactSection = () => {
             <div className="card bg-dark border-danger border-opacity-25 shadow">
               <div className="card-body p-4">
                 <h4 className="text-white mb-4">Send Us a Message</h4>
+                
+                {isSubmitted && (
+                  <div className="alert alert-success d-flex align-items-center mb-4" role="alert">
+                    <div>Message sent successfully! We'll get back to you soon.</div>
+                  </div>
+                )}
+                
+                {error && (
+                  <div className="alert alert-danger d-flex align-items-center mb-4" role="alert">
+                    <div>{error}</div>
+                  </div>
+                )}
+
                 <form onSubmit={handleSubmit}>
                   <div className="row g-3">
                     <div className="col-md-6">
@@ -99,9 +178,10 @@ const ContactSection = () => {
                           id="name"
                           placeholder="Your Name"
                           value={formData.name}
-                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          onChange={handleInputChange}
+                          required
                         />
-                        <label className="text-white-50">Your Name</label>
+                        <label htmlFor="name" className="text-white-50">Your Name</label>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -112,9 +192,10 @@ const ContactSection = () => {
                           id="email"
                           placeholder="Your Email"
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onChange={handleInputChange}
+                          required
                         />
-                        <label className="text-white-50">Your Email</label>
+                        <label htmlFor="email" className="text-white-50">Your Email</label>
                       </div>
                     </div>
                     <div className="col-12">
@@ -125,9 +206,10 @@ const ContactSection = () => {
                           id="subject"
                           placeholder="Subject"
                           value={formData.subject}
-                          onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                          onChange={handleInputChange}
+                          required
                         />
-                        <label className="text-white-50">Subject</label>
+                        <label htmlFor="subject" className="text-white-50">Subject</label>
                       </div>
                     </div>
                     <div className="col-12">
@@ -138,17 +220,19 @@ const ContactSection = () => {
                           placeholder="Your Message"
                           style={{ height: '150px' }}
                           value={formData.message}
-                          onChange={(e) => setFormData({...formData, message: e.target.value})}
+                          onChange={handleInputChange}
+                          required
                         ></textarea>
-                        <label className="text-white-50">Your Message</label>
+                        <label htmlFor="message" className="text-white-50">Your Message</label>
                       </div>
                     </div>
                     <div className="col-12">
                       <button 
                         type="submit" 
                         className="btn btn-danger btn-lg rounded-pill px-5 py-3"
+                        disabled={isSubmitting}
                       >
-                        Send Message
+                        {isSubmitting ? 'Sending...' : 'Send Message'}
                         <Send className="ms-2" size={20} />
                       </button>
                     </div>
